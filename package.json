@@ -1,0 +1,24 @@
+{
+  "name": "tic-tac-toe-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^8.31.0",
+    "eslint-plugin-import": "^2.27.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svitbar/tic-tac-toe-game.git"
+  },
+  "author": "Svitlana Barytska",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svitbar/tic-tac-toe-game/issues"
+  },
+  "homepage": "https://github.com/svitbar/tic-tac-toe-game#readme"
+}
