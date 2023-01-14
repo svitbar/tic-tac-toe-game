@@ -1,8 +1,16 @@
 'use strict';
 
+const cells = document.querySelectorAll('.plate-item');
+const btnStart = document.querySelector('.btn');
+
 let origBoard;
 const huPlayer = 'O';
 const aiPlayer = 'X';
+
+const x = '/styles/icons/cross-rect.svg';
+const o = '/styles/icons/circle-rect.svg';
+const empty = '/styles/icons/empty-rect.svg';
+
 const winCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -14,15 +22,13 @@ const winCombos = [
   [6, 4, 2]
 ];
 
-const cells = document.querySelectorAll('.plate-item');
-startGame();
+btnStart.addEventListener('click', () => startGame());
 
 function startGame() {
   document.querySelector('.result').style.display = 'none';
   origBoard = Array.from(Array(9).keys());
   for (let i = 0; i < cells.length; i++) {
-    cells[i].innerText = '';
-    cells[i].style.removeProperty('background-color');
+    cells[i].style.backgroundImage = `url(${empty})`;
     cells[i].addEventListener('click', turnClick, false);
   }
 }
@@ -36,7 +42,9 @@ function turnClick(square) {
 
 function turn(squareId, player) {
   origBoard[squareId] = player;
-  document.getElementById(squareId).innerText = player;
+  if (player === huPlayer) {
+    document.getElementById(squareId).style.backgroundImage = `url(${o})`;
+  } else document.getElementById(squareId).style.backgroundImage = `url(${x})`;
   const gameWon = checkWin(origBoard, player);
   if (gameWon) gameOver(gameWon);
 }
@@ -59,9 +67,6 @@ function gameOver(gameWon) {
     document.getElementById(index).style.backgroundColor =
 			gameWon.player === huPlayer ? 'blue' : 'red';
   }
-  for (let i = 0; i < cells.length; i++) {
-    cells[i].removeEventListener('click', turnClick, false);
-  }
   declareWinner(gameWon.player === huPlayer ? 'You win!' : 'You lose.');
 }
 
@@ -74,7 +79,7 @@ function bestSpot() {
   return minimax(origBoard, aiPlayer).index;
 }
 
-// function bestSpot() {
+// function easySpot() {
 //   return emptySquares()[0];
 // }
 
@@ -86,7 +91,7 @@ function checkTie() {
   if (emptySquares().length === 0) {
     for (let i = 0; i < cells.length; i++) {
       cells[i].style.backgroundColor = 'green';
-      cells[i].removeEventListener('click', turnClick, false);
+      cells[i].style.backgroundImage = `url(${empty})`;
     }
     declareWinner('Tie Game!');
     return true;
