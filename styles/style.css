@@ -55,17 +55,27 @@ main {
 .plate {
     width: 344px;
     height: 350px;
-    /* background-color: #313253;
-    background-image: url(./icons/empty-rect.svg);
-    background-repeat: no-repeat; */
     display: grid;
     grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
     gap: 10px;
+    grid-area: "b";
+}
+
+.buttons {
+    grid-area: "a";
+}
+
+.btn {
+    background-image: url('./icons/btn-start.svg');
+    width: 97px;
+    height: 38px;
+    border: 0px;
 }
 
 .play-field {
     display: grid;
     place-items: center;
+    grid-template-areas: "a b";
     height: 100%;
     width: 100%;
 }
