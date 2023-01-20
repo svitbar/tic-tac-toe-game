@@ -8,9 +8,9 @@ let origBoard;
 const huPlayer = 'O';
 const aiPlayer = 'X';
 
-const x = '/styles/icons/cross-rect.svg';
-const o = '/styles/icons/circle-rect.svg';
-const empty = '/styles/icons/empty-rect.svg';
+const x = 'styles/icons/cross-rect.svg';
+const o = 'styles/icons/circle-rect.svg';
+const empty = 'styles/icons/empty-rect.svg';
 
 const winCombin = [
   [0, 1, 2],
