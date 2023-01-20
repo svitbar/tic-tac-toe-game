@@ -5,8 +5,13 @@ const controller = require('../controllers/controller');
 
 const router = express.Router();
 
-router.get('/', controller.getAllF);
+router.route('/profile')
+  .get(controller.getAll)
+  .post(controller.createProfile);
 
-router.post('/register', controller.postData);
+router.route('/profile/:id')
+  .get(controller.getOne)
+  .put(controller.updateProfile)
+  .delete(controller.deleteUser);
 
 module.exports = router;
